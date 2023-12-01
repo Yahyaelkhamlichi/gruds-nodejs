@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+
+}
+:root{
+    --lawn-color:#222;
+    --inp-color:#111;
+    --lawn2-color:rgb(87, 184, 42);
+    --lawn3-color:rgba(64, 203, 0, 0.674);
+--lwn-color:white;
+}
+.dark{
+    --lawn-color:#ffffff;
+    --inp-color:#111;
+    --lawn2-color:#2c698d;
+    --lawn3-color:#87c4c4;
+    --lwn-color:black;
+}
+#drak{
+    background-color: #222;
+}
+#icon2{
+    display: none;
+   
+}
+body{
+    background-color:var(--lawn-color);
+    color: white;
+    font-family: cursive;
+}
+.cruds{
+    width: 80%;
+   
+    margin: auto;
+
+}
+.head{
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 5px;
+    color: var(--lwn-color);
+}
+/* input */
+.inp{
+    width: 80%;
+margin: auto;
+
+}
+input{
+    width: 100%;
+    height: 30px;
+    background-color: var(--inp-color)   ; 
+    border: none;
+    outline: none;
+    margin-top: 7px;
+    padding: 4px;
+    color: white;
+    border-radius: 5px;
+    margin: 4px 0;
+}
+input:focus{
+    background-color: black;
+    transform: scale(1.1);
+}
+.inpts input{
+    width: 20%;
+    
+   
+}
+
+small{
+    background-color: rgb(59, 132, 26);
+    padding: 4px;
+    margin-left:4px ;
+}
+small::before{
+    content: "totle:";
+}
+button{
+    width: 100%;
+    height: 30px;
+    border: none;
+    padding-top:3px ;
+    border-radius: 30px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    background-color:var(--lawn2-color) ;
+    text-transform: capitalize;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+button:hover{
+    background-color:var(--lawn3-color) ;
+    letter-spacing: 1.5px;
+}
+
+
+::placeholder{
+    text-transform: uppercase;
+}
+.outp{
+  width: 80%;
+margin: auto;  
+}
+.btn{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+.btn button{
+width: 40%;
+
+
+}
+table{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    color:var(--lwn-color);
+}
+tr th{
+    text-transform: uppercase;
+}
+th,td{
+    padding: 5px;
+}
+#delett{
+    display: block;
+}
+#icon i{
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 22px;
+}
+    </style>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="cruds">
+    <div class="head">
+        <h1>cruds</h1>
+        <p>update</p>
+        <!-- <button id="drak" >dark</button> -->
+        
+    </div>
+    <form action="/x/<%= obj._id %>?_method=PUT" method="post">
+        <div class="inp">
+            <input type="text" value="<%= obj.Title %>" placeholder="title" name="Title" id="title" >
+            <div class="inpts">
+        <input value="<%= obj.Price %>" type="number" id="price" placeholder="price" name="Price">
+                <input value="<%= obj.Taxes %>" type="number" id="taxes" placeholder="taxes" name="Taxes">
+                <input  value="<%= obj.Ads %>"  type="number" id="ads" placeholder="ads" name="Ads">
+                <input value="<%= obj.Discount %>"   name="Discount"  type="number" id="discount" placeholder="discount">
+    
+    
+            </div>
+           
+            <input type="text" value="<%= obj.Category %>"  name="Category" id="category" placeholder="category" >
+            <button id="great" type="submit">update</button>
+        </div>
+    
+        </form>
+        </div>
+</body>
+</html>

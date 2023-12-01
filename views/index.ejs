@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>gruds</title>
+</head>
+<body>
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+
+}
+:root{
+    --lawn-color:#222;
+    --inp-color:#111;
+    --lawn2-color:rgb(87, 184, 42);
+    --lawn3-color:rgba(64, 203, 0, 0.674);
+--lwn-color:white;
+}
+.dark{
+    --lawn-color:#ffffff;
+    --inp-color:#111;
+    --lawn2-color:#2c698d;
+    --lawn3-color:#87c4c4;
+    --lwn-color:black;
+}
+#drak{
+    background-color: #222;
+}
+#icon2{
+    display: none;
+   
+}
+body{
+    background-color:var(--lawn-color);
+    color: white;
+    font-family: cursive;
+}
+.cruds{
+    width: 80%;
+   
+    margin: auto;
+
+}
+.head{
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 5px;
+    color: var(--lwn-color);
+}
+/* input */
+.inp{
+    width: 80%;
+margin: auto;
+
+}
+input{
+    width: 100%;
+    height: 30px;
+    background-color: var(--inp-color)   ; 
+    border: none;
+    outline: none;
+    margin-top: 7px;
+    padding: 4px;
+    color: white;
+    border-radius: 5px;
+    margin: 4px 0;
+}
+input:focus{
+    background-color: black;
+    transform: scale(1.1);
+}
+.inpts input{
+    width: 20%;
+    
+   
+}
+
+small{
+    background-color: rgb(59, 132, 26);
+    padding: 4px;
+    margin-left:4px ;
+}
+small::before{
+    content: "totle:";
+}
+button{
+    width: 100%;
+    height: 30px;
+    border: none;
+    padding-top:3px ;
+    border-radius: 30px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    background-color:var(--lawn2-color) ;
+    text-transform: capitalize;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+button:hover{
+    background-color:var(--lawn3-color) ;
+    letter-spacing: 1.5px;
+}
+
+
+::placeholder{
+    text-transform: uppercase;
+}
+.outp{
+  width: 80%;
+margin: auto;  
+}
+.btn{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+.btn button{
+width: 40%;
+
+
+}
+table{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    color:var(--lwn-color);
+}
+tr th{
+    text-transform: uppercase;
+}
+th,td{
+    padding: 5px;
+}
+#delett{
+    display: block;
+}
+#icon i{
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 22px;
+}
+    </style>
+
+<div  id="icon">
+
+    <i  id="icon1"   class="fa-solid fa-sun"></i>
+    <i   id="icon2"      class="fa-solid fa-moon"></i>
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<div class="cruds">
+    <div class="head">
+        <h1>cruds</h1>
+        <p>product management system</p>
+        <!-- <button id="drak" >dark</button> -->
+        
+    </div>
+<br/>
+    <form action="/" method="post">
+    <div class="inp">
+        <input type="text" placeholder="title" name="Title" id="title" >
+        <div class="inpts">
+    <input  type="number" id="price" placeholder="price" name="Price">
+            <input  type="number" id="taxes" placeholder="taxes" name="Taxes">
+            <input    type="number" id="ads" placeholder="ads" name="Ads">
+            <input    name="Discount"  type="number" id="discount" placeholder="discount">
+
+
+        </div>
+       
+        <input type="text"  name="Category" id="category" placeholder="category" >
+        <button id="great">greate</button>
+    </div>
+
+    </form>
+
+
+
+    <div class="outp">
+      
+       
+       
+        <table>
+            <tr>
+                <th>id</th>
+                <th>title</th>
+                <th>price</th>
+                <th>taxes</th>
+
+                <th>ads</th>
+                <th>discount</th>
+               
+                <th>category</th>
+                <th>last update</th>
+                <th>delete</th>
+                <th>update</th>
+            </tr>
+            
+          
+            <tbody id="tbody">
+                
+             
+                <%arr.forEach((item,index) => { %>
+                    <tr>
+                    <td><%= index +1 %></td>
+                    <td><%= item.Title %></td>
+                    <td><%= item.Price %></td>
+                    <td><%= item.Taxes %></td>
+                    <td><%= item.Ads %></td>
+                    <td><%= item.Discount %></td>
+
+                    <td><%=  item.Category %></td>
+                    <td>
+                       
+                         
+                        <%= moment(item.updatedAt).fromNow(); %>
+                      
+                    
+                    </td>
+                    <td> 
+                    <form action="/x/<%=item._id %>?_method=DELETE" method="post">
+                       <button id="delete" >delete</button>
+                        </form>
+                      
+                        </td>
+                        <td>  <button id="update"> <a style="text-decoration: none;color: white;" href="/x/<%=item._id   %> ">update</a></button></td>
+                    </tr>
+                    
+                <% }) %>
+            
+               
+                
+                
+            </tbody>
+              
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
